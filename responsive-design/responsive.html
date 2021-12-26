@@ -2,6 +2,7 @@
 <html lang='en'>
 
 <head>
+    <!-- next line disables zoom on mobile devices -->
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
     <meta charset='UTF-8' />
     <title>Responsive Design</title>
@@ -11,11 +12,39 @@
 <body>
     <div class='page'>
         <div class='section menu'></div>
-        <div class='section header'>
-            <img src='images/header.svg' />
+        <!-- <div class='section header'>
+            the fancy way, we tell the browser the image is 2000 px wide (or 1000)
+            we also are telling the browser the resolution when the image is rendered (if display is at least 960px image'll be 960px), otherwhise image
+            will be 100% of viewporth width 
+            <div class='photo'>
+                <img src='images/photo-small.jpg' srcset='images/photo-big.jpg 2000w,
+                             images/photo-small.jpg 1000w' sizes='(min-width: 960px) 960px,
+                            100vw' />
+            </div>
         </div>
         <div class='section content'>
-            <img src='images/content.svg' />
+             the easy way
+            <div class='illustration'>
+              <img src='images/illustration-big.png' style='max-width: 500px'/>
+            </div>
+
+            the right way 
+            1x normal screens, 2x retina displays, src for legacy browsers which dont support srcset
+            <div class='illustration'>
+                <img src='illustration-small.png' srcset='images/illustration-small.png 1x,
+                             images/illustration-big.png 2x' style='max-width: 500px' />
+            </div>
+        </div> -->
+        <!-- lets you use different designs for different displays -->
+        <div class='section header'>
+            <div class='photo'>
+                <picture>
+                    <source media='(min-width: 401px)' srcset='images/photo-big.jpg' />
+                    <source media='(max-width: 400px)' srcset='images/photo-tall.jpg' />
+                    <!-- legacy fallback -->
+                    <img src='images/photo-small.jpg' />
+                </picture>
+            </div>
         </div>
         <div class='section sign-up'>
             <img src='images/sign-up.svg' />
